@@ -1,258 +1,151 @@
-# @capgo/capacitor-plugin-template
- <a href="https://capgo.app/"><img src='https://raw.githubusercontent.com/Cap-go/capgo/main/assets/capgo_banner.png' alt='Capgo - Instant updates for capacitor'/></a>
+# @capgo/capacitor-file-sharer
+
+<a href="https://capgo.app/"><img src="https://raw.githubusercontent.com/Cap-go/capgo/main/assets/capgo_banner.png" alt="Capgo - Instant updates for Capacitor" /></a>
 
 <div align="center">
-  <h2><a href="https://capgo.app/?ref=plugin_{{PLUGIN_REF_SLUG}}"> ➡️ Get Instant updates for your App with Capgo</a></h2>
-  <h2><a href="https://capgo.app/consulting/?ref=plugin_{{PLUGIN_REF_SLUG}}"> Missing a feature? We’ll build the plugin for you 💪</a></h2>
+  <h2><a href="https://capgo.app/?ref=plugin_file_sharer">Get instant updates for your app with Capgo</a></h2>
+  <h2><a href="https://capgo.app/consulting/?ref=plugin_file_sharer">Missing a feature? We will build the plugin for you</a></h2>
 </div>
 
-> Template README. Replace every `{{PLACEHOLDER}}` value before releasing.
-
-## Snapshot
-
-- **Plugin name:** `{{PLUGIN_DISPLAY_NAME}}`
-- **One-line value:** `{{PLUGIN_TAGLINE}}`
-- **Maintainer:** `{{MAINTAINER_OR_TEAM}}`
-- **Status:** `{{alpha|beta|stable}}`
-
-## Pre-Release Checklist
-
-- [ ] Replace all `{{PLACEHOLDER}}` values in this README.
-- [ ] Replace `{{PLUGIN_REF_SLUG}}` in Capgo CTA links (example: `native_audio`).
-- [ ] Replace all `__AI_KEYWORD_*__` entries in `package.json`.
-- [ ] Change git remote away from this template before first push:
-  `git remote set-url origin git@github.com:Cap-go/capacitor-{{PLUGIN_SLUG}}.git`
-- [ ] Remove bootstrap-only init script from generated plugin copy:
-  delete `scripts/init-plugin.sh`, delete `scripts/templates/`, and remove `"init-plugin"` from `package.json` scripts.
-- [ ] Update the compatibility table for this plugin.
-- [ ] Update `src/definitions.ts` with the real public API and JSDoc.
-- [ ] Run `bun run docgen` and review generated API docs below.
-- [ ] Confirm examples in this file run against the real implementation.
-- [ ] Set GitHub repo description to start with `Capacitor plugin for ...`.
-- [ ] Set GitHub repo homepage to `https://capgo.app/docs/plugins/{{PLUGIN_SLUG}}/`.
-- [ ] Open docs/website PR and follow the complete website integration checklist in section **3) Open docs/website pull request**.
-- [ ] Run `bun run verify` before publishing.
-
-## Problem & Scope
-
-### Why this plugin exists
-
-`{{WHAT_PAIN_POINT_IT_SOLVES}}`
-
-## Capgo Links
-
-- **Plugin docs URL:** `https://capgo.app/docs/plugins/{{PLUGIN_SLUG}}/`
-- **Plugin tutorial URL:** `{{PLUGIN_TUTORIAL_URL}}`
-- **Website/docs repo:** `https://github.com/Cap-go/website`
-
-### What it does
-
-- `{{CAPABILITY_1}}`
-- `{{CAPABILITY_2}}`
-- `{{CAPABILITY_3}}`
-
-### What it does not do
-
-- `{{OUT_OF_SCOPE_1}}`
-- `{{OUT_OF_SCOPE_2}}`
+Capacitor plugin for sharing and saving files on Android, iOS, and Web.
 
 ## Compatibility
 
 | Plugin version | Capacitor compatibility | Maintained |
 | -------------- | ----------------------- | ---------- |
-| v8.\*.\*       | v8.\*.\*                | ✅          |
-| v7.\*.\*       | v7.\*.\*                | On demand   |
-| v6.\*.\*       | v6.\*.\*                | On demand   |
+| v8.*.*         | v8.*.*                  | Yes        |
+| v7.*.*         | v7.*.*                  | On demand  |
+| v6.*.*         | v6.*.*                  | On demand  |
 
-Policy:
-
-- New plugins start at version `8.0.0` (Capacitor 8 baseline).
-- Backward compatibility for older Capacitor majors is supported on demand.
-
-## Quick Start (Template Authors)
-
-```bash
-bun install
-bun run init-plugin your-plugin YourPlugin app.capgo.yourplugin
-# Optional Kotlin Android variant:
-# bun run init-plugin your-plugin YourPlugin app.capgo.yourplugin Cap-go kotlin
-bun run verify
-```
-
-The `init-plugin` command updates package names, native class names, iOS/Android identifiers, and the local example app wiring.
-It accepts an optional fifth `android-lang` argument and defaults to `java`; pass `kotlin` to generate Kotlin Android sources and Gradle setup.
-To use Kotlin while keeping the default GitHub org, pass `Cap-go` as the 4th argument and `kotlin` as the 5th argument.
-
-After running `init-plugin` in your new plugin copy:
-
-```bash
-git remote set-url origin git@github.com:Cap-go/capacitor-your-plugin.git
-rm scripts/init-plugin.sh
-rm -rf scripts/templates
-```
-
-Then remove `"init-plugin"` from the `scripts` section in `package.json` before publishing.
-
-## Capacitor Hook Scripts (Recommended)
-
-For plugins that need automated setup during `cap sync` / `cap update`, define Capacitor lifecycle hooks in `package.json`.
-
-Example:
-
-```json
-{
-  "scripts": {
-    "generate:version-share": "bun run scripts/generate-version-share-data.mjs",
-    "configure:dependencies": "bun run scripts/configure-dependencies.mjs",
-    "capacitor:sync:before": "bun run generate:version-share",
-    "capacitor:update:before": "bun run generate:version-share",
-    "capacitor:sync:after": "bun run configure:dependencies"
-  }
-}
-```
-
-Guideline:
-- Use `*:before` for generated inputs needed by native sync/update.
-- Use `*:after` for native patching that depends on files created by sync/update.
-- Keep hook scripts idempotent.
-
-## Public Launch (Required)
-
-### 1) Publish in Capgo GitHub org as public
-
-```bash
-gh repo create Cap-go/capacitor-{{PLUGIN_SLUG}} --public --source=. --remote=origin --push
-```
-
-If the repo already exists and is private:
-
-```bash
-gh repo edit Cap-go/capacitor-{{PLUGIN_SLUG}} --visibility public --accept-visibility-change-consequences
-```
-
-### 2) Set GitHub description and homepage
-
-Description must always start with: `Capacitor plugin for ...`
-
-```bash
-gh repo edit Cap-go/capacitor-{{PLUGIN_SLUG}} \
-  --description "Capacitor plugin for {{SHORT_USE_CASE}}." \
-  --homepage "https://capgo.app/docs/plugins/{{PLUGIN_SLUG}}/"
-```
-
-### 3) Open docs/website pull request
-
-Create a PR on `https://github.com/Cap-go/website` (or the local `landing/` folder in the monorepo) with all of the following:
-
-1. Add the plugin entry in `src/config/plugins.ts`.
-2. Add a plugin `LinkCard` in `src/content/docs/docs/plugins/index.mdx`.
-3. Create docs pages in `src/content/docs/docs/plugins/<plugin-doc-slug>/`:
-   `index.mdx`, `getting-started.mdx`, and optionally `ios.mdx` + `android.mdx` when platform setup differs.
-4. Update `astro.config.mjs`:
-   add `docs/plugins/<plugin-doc-slug>/**` in pagefind path buckets and add a sidebar section for the plugin pages.
-5. Add the SEO tutorial page in `src/content/plugins-tutorials/en/<plugin-repo-slug>.md`.
-6. Add icon asset `public/icons/plugins/<plugin-doc-slug>.svg` if the docs hero uses a plugin icon.
-7. Cross-link docs and tutorial pages.
-
-Slug mapping rules:
-
-- `<plugin-doc-slug>` is the docs route slug used under `/docs/plugins/<plugin-doc-slug>/`.
-- `<plugin-repo-slug>` is extracted from the GitHub repo URL in `src/config/plugins.ts` and is used by `/plugins/<slug>/`.
-- Example: repo `https://github.com/Cap-go/capacitor-app-attest/` requires tutorial file
-  `src/content/plugins-tutorials/en/capacitor-app-attest.md`.
-
-Starter snippets:
-
-`src/config/plugins.ts`
-
-```ts
-{
-  name: '@capgo/capacitor-{{PLUGIN_SLUG}}',
-  author: 'github.com/Cap-go',
-  description: 'Capacitor plugin for {{SHORT_USE_CASE}}',
-  href: 'https://github.com/Cap-go/capacitor-{{PLUGIN_SLUG}}/',
-  title: '{{PLUGIN_DISPLAY_NAME}}',
-  icon: ShieldCheckIcon,
-},
-```
-
-`astro.config.mjs` sidebar entry
-
-```ts
-{
-  label: '{{PLUGIN_DISPLAY_NAME}}',
-  items: [
-    { label: 'Overview', link: '/docs/plugins/<plugin-doc-slug>/' },
-    { label: 'Getting started', link: '/docs/plugins/<plugin-doc-slug>/getting-started' },
-    { label: 'iOS setup', link: '/docs/plugins/<plugin-doc-slug>/ios' },
-    { label: 'Android setup', link: '/docs/plugins/<plugin-doc-slug>/android' },
-  ],
-  collapsed: true,
-},
-```
-
-Required docs files:
-
-- `src/content/docs/docs/plugins/<plugin-doc-slug>/index.mdx`
-- `src/content/docs/docs/plugins/<plugin-doc-slug>/getting-started.mdx`
-- `src/content/docs/docs/plugins/<plugin-doc-slug>/ios.mdx` (if iOS-specific setup exists)
-- `src/content/docs/docs/plugins/<plugin-doc-slug>/android.mdx` (if Android-specific setup exists)
-- `src/content/plugins-tutorials/en/<plugin-repo-slug>.md`
+The plugin major version follows the Capacitor major version. New work targets Capacitor 8 first.
 
 ## Install
 
 ```bash
-bun add @capgo/capacitor-plugin-template
+bun add @capgo/capacitor-file-sharer
 bunx cap sync
 ```
 
-## Minimal Usage
+## Usage
 
 ```typescript
-import { PluginTemplate } from '@capgo/capacitor-plugin-template';
+import { FileSharer } from '@capgo/capacitor-file-sharer';
 
-const result = await PluginTemplate.echo({ value: 'Hello from Capgo' });
-console.log(result.value);
+await FileSharer.share({
+  filename: 'report.pdf',
+  contentType: 'application/pdf',
+  base64Data: reportBase64,
+  title: 'Quarterly report',
+  text: 'Attached report',
+});
+```
+
+Share from a local file path or Capacitor file URL:
+
+```typescript
+await FileSharer.share({
+  filename: 'movie.mp4',
+  contentType: 'video/mp4',
+  path: fileUri,
+});
+```
+
+Save directly on Android or download on Web:
+
+```typescript
+const result = await FileSharer.save({
+  filename: 'backup.zip',
+  contentType: 'application/zip',
+  base64Data: zipBase64,
+  android: {
+    saveDirectory: 'downloads',
+    relativePath: 'Download/My App',
+  },
+});
+
+console.log(result.uri);
 ```
 
 ## Integration Notes
 
-- **iOS:** `{{IOS_NOTES_OR_PERMISSIONS}}`
-- **Android:** `{{ANDROID_NOTES_OR_PERMISSIONS}}`
-- **Web:** `{{WEB_LIMITATIONS_OR_BEHAVIOR}}`
+### Android
 
-## Example App
+- Sharing uses a `FileProvider`, `ClipData`, and URI grants so Android's chooser can read previews and thumbnails.
+- `share()` resolves after the Android chooser opens. This avoids retaining large base64 payloads in activity state.
+- `save()` writes to MediaStore on Android 10+ and to the matching public directory on older Android versions.
+- Android 9 and below require `WRITE_EXTERNAL_STORAGE` for public saves; the plugin manifest includes it with `maxSdkVersion=28`.
+- Android save directories: `downloads`, `pictures`, `movies`, `music`, and `documents`.
 
-The `example-app/` folder is linked via `file:..` and is intended for validating native wiring during development.
+### iOS
+
+- `share()` supports `base64Data` and direct local `path` sharing.
+- `save()` opens the native share sheet so the user can choose Save to Files or another destination.
+- Swift Package Manager and CocoaPods are both supported.
+
+### Web
+
+- `share()` and `save()` download the file in the browser.
+- Base64 conversion is chunked to avoid large-array allocation failures in Chromium.
+
+## Error Codes
+
+- `ERR_PARAM_NO_FILENAME`: `filename` is missing or blank.
+- `ERR_PARAM_NO_DATA`: neither `base64Data` nor `path` was provided.
+- `ERR_PARAM_DATA_INVALID`: base64 input could not be decoded.
+- `ERR_LOCAL_FILE_NOT_FOUND`: the provided local path or content URI could not be opened.
+- `ERR_FILE_CACHING_FAILED`: the native temporary file could not be written.
+- `ERR_FILE_SAVE_FAILED`: Android could not save the file to public storage.
+- `ERR_ACTIVITY_NOT_FOUND`: Android could not open a share target.
+- `USER_CANCELLED`: iOS share sheet was dismissed without completing.
 
 ## API
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`share(...)`](#share)
+* [`save(...)`](#save)
 * [`getPluginVersion()`](#getpluginversion)
 * [Interfaces](#interfaces)
+* [Type Aliases](#type-aliases)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-Base API used by the template plugin.
+Capacitor File Sharer plugin.
 
-### echo(...)
+### share(...)
 
 ```typescript
-echo(options: EchoOptions) => Promise<EchoResult>
+share(options: ShareFileOptions) => Promise<void>
 ```
 
-Echo a string to validate JS &lt;-&gt; native wiring.
+Share a file using the native share sheet on Android and iOS.
+On web, this downloads the file because browsers do not expose a consistent native file share target.
 
-| Param         | Type                                                |
-| ------------- | --------------------------------------------------- |
-| **`options`** | <code><a href="#echooptions">EchoOptions</a></code> |
+| Param         | Type                                                          |
+| ------------- | ------------------------------------------------------------- |
+| **`options`** | <code><a href="#sharefileoptions">ShareFileOptions</a></code> |
 
-**Returns:** <code>Promise&lt;<a href="#echoresult">EchoResult</a>&gt;</code>
+--------------------
+
+
+### save(...)
+
+```typescript
+save(options: SaveFileOptions) => Promise<SaveFileResult>
+```
+
+Save a file locally.
+On Android this writes to MediaStore/Downloads. On web this downloads the file.
+On iOS this opens the share sheet so the user can choose Save to Files or another target.
+
+| Param         | Type                                                          |
+| ------------- | ------------------------------------------------------------- |
+| **`options`** | <code><a href="#sharefileoptions">ShareFileOptions</a></code> |
+
+**Returns:** <code>Promise&lt;<a href="#savefileresult">SaveFileResult</a>&gt;</code>
 
 --------------------
 
@@ -273,22 +166,40 @@ Returns the platform implementation version marker.
 ### Interfaces
 
 
-#### EchoResult
+#### ShareFileOptions
 
-Echo response payload.
+Options used to share a file.
 
-| Prop        | Type                | Description                      |
-| ----------- | ------------------- | -------------------------------- |
-| **`value`** | <code>string</code> | The same value passed to `echo`. |
+| Prop              | Type                                                                          | Description                                                                      |
+| ----------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| **`filename`**    | <code>string</code>                                                           | File name presented to the receiving app. Include the extension.                 |
+| **`base64Data`**  | <code>string</code>                                                           | Base64 encoded file data. Data URL prefixes are accepted.                        |
+| **`path`**        | <code>string</code>                                                           | Local file path, file:// URL, content:// URL, or Capacitor _capacitor_file_ URL. |
+| **`contentType`** | <code>string</code>                                                           | MIME type of the file. Defaults to application/octet-stream when omitted.        |
+| **`text`**        | <code>string</code>                                                           | Optional text or caption shared with the file.                                   |
+| **`title`**       | <code>string</code>                                                           | Optional title for the share sheet or shared item.                               |
+| **`subject`**     | <code>string</code>                                                           | Optional subject used by mail and compatible share targets.                      |
+| **`android`**     | <code><a href="#androidfileshareroptions">AndroidFileSharerOptions</a></code> | Android-specific options.                                                        |
 
 
-#### EchoOptions
+#### AndroidFileSharerOptions
 
-Input payload for the echo call.
+Android-specific behavior for file sharing and saving.
 
-| Prop        | Type                | Description                                                           |
-| ----------- | ------------------- | --------------------------------------------------------------------- |
-| **`value`** | <code>string</code> | Arbitrary text that should be returned by native/web implementations. |
+| Prop                | Type                                                                  | Description                                                                    |
+| ------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **`chooserTitle`**  | <code>string</code>                                                   | Title shown at the top of the Android chooser.                                 |
+| **`saveDirectory`** | <code><a href="#androidsavedirectory">AndroidSaveDirectory</a></code> | Public collection used by save(). Defaults from contentType.                   |
+| **`relativePath`**  | <code>string</code>                                                   | Optional relative folder inside the selected public collection on Android 10+. |
+
+
+#### SaveFileResult
+
+Result returned by save().
+
+| Prop      | Type                | Description                                                  |
+| --------- | ------------------- | ------------------------------------------------------------ |
+| **`uri`** | <code>string</code> | Native URI of the saved file when the platform provides one. |
 
 
 #### PluginVersionResult
@@ -299,4 +210,29 @@ Plugin version payload.
 | ------------- | ------------------- | ----------------------------------------------------------- |
 | **`version`** | <code>string</code> | Version identifier returned by the platform implementation. |
 
+
+### Type Aliases
+
+
+#### AndroidSaveDirectory
+
+Android public collection used by save().
+
+<code>'downloads' | 'pictures' | 'movies' | 'music' | 'documents'</code>
+
+
+#### SaveFileOptions
+
+Options used to save a file locally.
+
+<code><a href="#sharefileoptions">ShareFileOptions</a></code>
+
 </docgen-api>
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+MPL-2.0

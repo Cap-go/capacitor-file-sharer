@@ -1,5 +1,5 @@
 {
-  "appId": "app.capgo.plugintemplate.example",
+  "appId": "app.capgo.filesharer.example",
   "appName": "Plugin Template Example",
   "webDir": "dist"
 }

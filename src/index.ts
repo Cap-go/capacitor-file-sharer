@@ -1,10 +1,10 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { PluginTemplatePlugin } from './definitions';
+import type { FileSharerPlugin } from './definitions';
 
-const PluginTemplate = registerPlugin<PluginTemplatePlugin>('PluginTemplate', {
-  web: () => import('./web').then((m) => new m.PluginTemplateWeb()),
+const FileSharer = registerPlugin<FileSharerPlugin>('FileSharer', {
+  web: () => import('./web').then((m) => new m.FileSharerWeb()),
 });
 
 export * from './definitions';
-export { PluginTemplate };
+export { FileSharer };

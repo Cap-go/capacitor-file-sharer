@@ -3,23 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@capgo/capacitor-plugin-template Example</title>
+    <title>@capgo/capacitor-file-sharer Example</title>
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
     <main class="container">
-      <h1>@capgo/capacitor-plugin-template</h1>
-      <p class="lead">Quickly validate the template plugin wiring.</p>
+      <h1>@capgo/capacitor-file-sharer</h1>
+      <p class="lead">Share or save a generated text file.</p>
 
-      <label for="echo-value">Echo value</label>
-      <input id="echo-value" type="text" value="Hello from example app" />
+      <label for="file-text">File contents</label>
+      <input id="file-text" type="text" value="Hello from Capgo File Sharer" />
 
       <div class="actions">
-        <button id="run-echo">Run echo</button>
+        <button id="share-file">Share file</button>
+        <button id="save-file">Save file</button>
         <button id="get-version">Get plugin version</button>
       </div>
 
-      <pre id="plugin-output">Press a button to run an action.</pre>
+      <pre id="plugin-output">Choose an action.</pre>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>
