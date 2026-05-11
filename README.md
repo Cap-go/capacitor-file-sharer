@@ -1,6 +1,6 @@
 # @capgo/capacitor-file-sharer
 
-<a href="https://capgo.app/"><img src="https://raw.githubusercontent.com/Cap-go/capgo/main/assets/capgo_banner.png" alt="Capgo - Instant updates for Capacitor" /></a>
+<a href="https://capgo.app/"><img src="https://capgo.app/readme-banner.svg?repo=Cap-go/capacitor-file-sharer" alt="Capgo - Instant updates for Capacitor" /></a>
 
 <div align="center">
   <h2><a href="https://capgo.app/?ref=plugin_file_sharer">Get instant updates for your app with Capgo</a></h2>
