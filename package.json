@@ -1,6 +1,6 @@
 {
   "name": "@capgo/capacitor-file-sharer",
-  "version": "8.1.7",
+  "version": "8.1.8",
   "description": "Capacitor plugin for sharing and saving files on Android, iOS, and Web.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
