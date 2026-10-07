@@ -1,13 +1,27 @@
 # @capgo/capacitor-file-sharer
 
-<a href="https://capgo.app/"><img src="https://capgo.app/readme-banner.svg?repo=Cap-go/capacitor-file-sharer" alt="Capgo - Instant updates for Capacitor" /></a>
+Share files through the native share sheet or save them to the device from your Capacitor app. On web, the same calls download the file.
+
+<a href="https://capgo.app/?ref=plugin_file_sharer"><img src="https://capgo.app/readme-banner.svg?repo=Cap-go/capacitor-file-sharer" alt="Capgo - Instant updates for Capacitor" /></a>
 
 <div align="center">
-  <h2><a href="https://capgo.app/?ref=plugin_file_sharer">Get instant updates for your app with Capgo</a></h2>
-  <h2><a href="https://capgo.app/consulting/?ref=plugin_file_sharer">Missing a feature? We will build the plugin for you</a></h2>
+  <p><b>Capgo</b>: open-source live updates for Ionic and Capacitor apps. Ship OTA fixes and features instantly, without waiting for app store review.</p>
+  <h2><a href="https://capgo.app/register/?ref=plugin_file_sharer">➡️ Get started for free</a></h2>
+  <p>14-day unlimited free trial. No credit card required</p>
+  <p><a href="https://capgo.app/consulting/?ref=plugin_file_sharer">Missing a feature? We'll build the plugin for you 💪</a></p>
 </div>
 
-Capacitor plugin for sharing and saving files on Android, iOS, and Web.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Cap-go/capacitor-file-sharer/main/assets/github-social-preview.png" alt="@capgo/capacitor-file-sharer for Capacitor apps" width="300" />
+</p>
+
+## Key features
+
+- **Share**: `share()` opens the native share sheet on iOS and Android.
+- **Save**: `save()` stores a file locally, using MediaStore on Android.
+- **Flexible input**: pass base64 data or a local file.
+- **Web fallback**: both methods download the file in the browser.
+- **Platforms**: iOS, Android and Web.
 
 ## Compatibility
 
