@@ -1,6 +1,6 @@
 # @capgo/capacitor-file-sharer
 
-Share files through the native share sheet or save them to the device from your Capacitor app. On web, the same calls download the file.
+Share files through the native share sheet from your Capacitor app, or save them to the device on Android. On web, the same calls download the file.
 
 <a href="https://capgo.app/?ref=plugin_file_sharer"><img src="https://capgo.app/readme-banner.svg?repo=Cap-go/capacitor-file-sharer" alt="Capgo - Instant updates for Capacitor" /></a>
 
@@ -18,7 +18,7 @@ Share files through the native share sheet or save them to the device from your 
 ## Key features
 
 - **Share**: `share()` opens the native share sheet on iOS and Android.
-- **Save**: `save()` stores a file locally, using MediaStore on Android.
+- **Save**: on Android, `save()` stores the file with MediaStore where supported and a legacy path on older versions. On iOS it opens the share sheet so the user picks the destination.
 - **Flexible input**: pass base64 data or a local file.
 - **Web fallback**: both methods download the file in the browser.
 - **Platforms**: iOS, Android and Web.
