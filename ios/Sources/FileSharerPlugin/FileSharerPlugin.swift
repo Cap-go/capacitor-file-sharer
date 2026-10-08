@@ -47,15 +47,17 @@ public class FileSharerPlugin: CAPPlugin, CAPBridgedPlugin {
                 return
             }
 
-            var activityItems: [Any] = [fileUrl]
+            var activityItems: [Any] = []
+            if let subject = call.getString("subject") ?? call.getString("title") {
+                activityItems.append(FileShareActivityItemSource(fileURL: fileUrl, subject: subject))
+            } else {
+                activityItems.append(fileUrl)
+            }
             if let text = call.getString("text"), !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 activityItems.append(text)
             }
 
             let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-            if let subject = call.getString("subject") ?? call.getString("title") {
-                activityViewController.setValue(subject, forKey: "subject")
-            }
 
             if let sourceView = viewController.view {
                 activityViewController.popoverPresentationController?.sourceView = sourceView
@@ -125,6 +127,34 @@ public class FileSharerPlugin: CAPPlugin, CAPBridgedPlugin {
         }
 
         throw FileSharerError.noData
+    }
+}
+
+private final class FileShareActivityItemSource: NSObject, UIActivityItemSource {
+    private let fileURL: URL
+    private let subject: String
+
+    init(fileURL: URL, subject: String) {
+        self.fileURL = fileURL
+        self.subject = subject
+    }
+
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        fileURL
+    }
+
+    func activityViewController(
+        _ activityViewController: UIActivityViewController,
+        itemForActivityType activityType: UIActivityType?
+    ) -> Any {
+        fileURL
+    }
+
+    func activityViewController(
+        _ activityViewController: UIActivityViewController,
+        subjectForActivityType activityType: UIActivityType?
+    ) -> String {
+        subject
     }
 }
 
