@@ -145,14 +145,14 @@ private final class FileShareActivityItemSource: NSObject, UIActivityItemSource 
 
     func activityViewController(
         _ activityViewController: UIActivityViewController,
-        itemForActivityType activityType: UIActivityType?
-    ) -> Any {
+        itemForActivityType activityType: UIActivity.ActivityType?
+    ) -> Any? {
         fileURL
     }
 
     func activityViewController(
         _ activityViewController: UIActivityViewController,
-        subjectForActivityType activityType: UIActivityType?
+        subjectForActivityType activityType: UIActivity.ActivityType?
     ) -> String {
         subject
     }
